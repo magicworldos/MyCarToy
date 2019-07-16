@@ -16,6 +16,6 @@
 #include <stdint.h>
 #include <string.h>
 
-//#define __MASTER
+#define __MASTER
 
 #endif

@@ -90,12 +90,12 @@ int main(int argc, char *argv[])
 	NRF_RX_Mode();
 #endif
 
-	uint64_t i = 0;
+	uint64_t i_cnt = 0;
 	uint64_t i_tx_rx = 0;
 
 	while (1)
 	{
-		if (i % 10 == 0)
+		if (i_cnt % 10 == 0)
 		{
 			for (int i = 0; i < 6; i++)
 			{
@@ -127,17 +127,17 @@ int main(int argc, char *argv[])
 			}
 		}
 
-		if (i % 1000 == 0)
+		if (i_cnt % 1000 == 0)
 		{
 			led_on(0);
 		}
-		else if (i % 1000 == 500)
+		else if (i_cnt % 1000 == 500)
 		{
 			led_off(0);
 		}
 
 #ifdef __MASTER
-		if (i % 50 == 0)
+		if (i_cnt % 50 == 0)
 		{
 			uint32_t btn_val = 0;
 			btn_val |= btn[1];
@@ -157,36 +157,6 @@ int main(int argc, char *argv[])
 			}
 		}
 #else
-
-//		if (btn[5])
-//		{
-//			mode = 0;
-//			led_off(3);
-//		}
-//		if (btn[4])
-//		{
-//			mode = 1;
-//			led_on(3);
-//		}
-//
-//		if (mode == 1)
-//		{
-//			if (btn[3] && !btn[2])
-//			{
-//				pwm[0] = PWM_MAX_VALUE;
-//				pwm[1] = PWM_MAX_VALUE;
-//			}
-//			else if (!btn[3] && btn[2])
-//			{
-//				pwm[0] = PWM_MIN_VALUE;
-//				pwm[1] = PWM_MIN_VALUE;
-//			}
-//			else if (!btn[3] && !btn[2])
-//			{
-//				pwm[0] = PWM_MID;
-//				pwm[1] = PWM_MID;
-//			}
-//		}
 
 		if (mode == 0)
 		{
@@ -262,7 +232,7 @@ int main(int argc, char *argv[])
 		}
 #endif
 
-		i++;
+		i_cnt++;
 		sysclk_delay_ms(1);
 	}
 
